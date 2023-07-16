@@ -17,35 +17,35 @@ function playRound(playerSelection, computerSelection) {
   computerSelection = computerSelection.toLowerCase();
 
   if (playerSelection === "rock" && computerSelection === "rock") {
-    alert("The game is tie!");
+    console.log("The game is tie!");
     return 0;
   } else if (playerSelection === "rock" && computerSelection === "paper") {
-    alert("You lose! Paper beats Rock");
+    console.log("You lose! Paper beats Rock");
     return 1;
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    alert("You won! Rock beats Scissors");
+    console.log("You won! Rock beats Scissors");
     return 2;
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-    alert("You won! Paper beats Rock");
+    console.log("You won! Paper beats Rock");
     return 2;
   } else if (playerSelection === "paper" && computerSelection === "paper") {
-    alert("The game is tie!");
+    console.log("The game is tie!");
     return 0;
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
-    alert("You lose! Scissors cuts Paper");
+    console.log("You lose! Scissors cuts Paper");
     return 1;
   } else if (playerSelection === "scissors" && computerSelection === "rock") {
-    alert("You lose! Rock beats Scissors");
+    console.log("You lose! Rock beats Scissors");
     return 1;
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    alert("You won! Scissors cuts Paper");
+    console.log("You won! Scissors cuts Paper");
     return 2;
   } else if (playerSelection === "scissors" && computerSelection === "scissors") {
-    alert("The game is tie!");
+    console.log("The game is tie!");
     return 0;
   } else {
-    alert("The round didnt count");
-    return -1;
+    console.log("The round didnt count");
+    return 0;
   }
 }
 
@@ -53,30 +53,31 @@ function game() {
   let compWonNum = 0;
   let playerWonNum = 0;
   let winner;
-  for (let i = 0; i < numRound; i++) {
-    while((playerSelection = prompt("What is your selection?")) === null) 
+  for (let i = 0; i < maxRound; i++) {
+    if(playerWonNum === 3 ||compWonNum === 3) {
+      break;
+    }
+    while((playerSelection = prompt("What is your selection?")) === null) {}
     computerSelection = getComputerChoice();
     winner = playRound(playerSelection, computerSelection);
-    if (winner === -1) {
-      --numRound;
-      continue;
-    } else if (winner === 0) {
-      --numRound;
-      continue;
+    if (winner === 0) {
+      --i;
     } else if (winner === 1) {
       compWonNum++;
     } else if (winner === 2) {
       playerWonNum++;
     }
+    console.log(`\nScore: Player: ${playerWonNum} / Computer: ${compWonNum} \n`);
   }
   if (compWonNum > playerWonNum) {
-    alert(`The computer won the game. Score: ${compWonNum} - ${playerWonNum}`);
+    alert(`The computer won the game. Score: Player: ${playerWonNum} / Computer: ${compWonNum} `);
   } else {
-    alert(`The computer won the game. Score: ${playerWonNum} - ${compWonNum}`);
+    alert(`The player won the game. Score: Player: ${playerWonNum} / Computer: ${compWonNum} `);
   }
+  console.log(`\nFinal Score: Player: ${playerWonNum} / Computer: ${compWonNum} \n`)
 }
 
-let numRound = 5;
+const maxRound = 5;
 let playerSelection, computerSelection;
 
 game();
