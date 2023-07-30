@@ -1,0 +1,85 @@
+body,
+button {
+  background-color: black;
+  color: white;
+  margin: auto;
+  font-family: 'Monoton', cursive;
+}
+
+button {
+    border: none;
+
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#header {
+    font-size: 65px;
+    display: flex;
+    justify-content: center;
+}
+.mainContainer {
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+.gameContainer {
+    width: 1250px;
+    display: flex;
+    padding: 25px;
+}
+.gameContainer .playerContainer {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+height: auto;
+}
+.gameContainer .scoreContainer {
+    background-color: black;
+    display: flex;
+    border-radius: 1em;
+    width: auto;
+    padding: 20px;
+}
+.playerContainer .buttonContainer {
+    margin: 5px;
+    padding: 10px;
+    display: flex;
+    border: 5px solid white;
+    border-radius: 1em;
+    width: 325px;
+    padding: 10px;
+    transition: border-color 0.3s ease;
+    height: auto;
+  }
+  .buttonContainer:hover {
+    border-color: #ffc600; 
+    box-shadow: 0 0 1rem #ffc600;
+  }
+.buttonContainer .imageBox {
+    overflow: hidden;
+}
+  
+.imageBox img {
+  max-width: 300px;
+  max-height: 250px;
+  padding: 5px;
+}
+.imageBox:hover {
+    transform: scale(1.1); /* Scale up the imageBox on hover */
+    transition: transform 0.3s ease; /* Add transition for the scaling effect */
+  }
+
+
+
+
+
+
