@@ -57,7 +57,7 @@ function game() {
     if(playerWonNum === 3 ||compWonNum === 3) {
       break;
     }
-    while((playerSelection = prompt("What is your selection?")) === null) {}
+    // while((playerSelection = prompt("What is your selection?")) === null) {}
     computerSelection = getComputerChoice();
     winner = playRound(playerSelection, computerSelection);
     if (winner === 0) {
