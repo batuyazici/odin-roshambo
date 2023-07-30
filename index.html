@@ -1,11 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Re - cham - beu</title>
-</head>
-<body>
-    <script src="./index.js" ></script>
-</body>
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="mainContainer">
+        <header id="header">Rock - Paper - Scissors</header>
+      <div class="gameContainer">
+        <div class="playerContainer">
+          <div class="buttonContainer" id="container1">
+            <button id="button">
+              <div class="imageBox">
+                <img src="./assets/rock.png" alt="Rock pixel picture" />
+              </div>
+            </button>
+          </div>
+          <div class="buttonContainer" id="container2">
+            <button id="paper">
+              <div class="imageBox">
+                <img src="./assets/paper.png" alt="Paper pixel picture" />
+              </div>
+            </button>
+          </div>
+          <div class="buttonContainer" id="container3">
+            <button id="scissors">
+              <div class="imageBox">
+                <img src="./assets/scissors.png" alt="Scissors pixel picture" />
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="scoreContainer">
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <script src="./index.js" defer></script>
+  </body>
 </html>
