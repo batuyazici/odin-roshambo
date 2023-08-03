@@ -1,83 +1,110 @@
+let compWonNum = 0;
+let playerWonNum = 0;
+const buttons = document.querySelectorAll("button");
+const resetButton = document.querySelector("#reset");
+const winner = document.querySelector("#winnerText");
+const computerText = document.querySelector("#computerText");
+const score = document.querySelector("#scoreText");
+const statusBar = document.querySelector("#statusText");
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3) + 1;
   switch (choice) {
     case 1:
+      displayComputerChoice("Rock");
       return "Rock";
     case 2:
+      displayComputerChoice("Paper");
       return "Paper";
     case 3:
+      displayComputerChoice("Scissors");
       return "Scissors";
     default:
       return null;
   }
 }
 
+function displayComputerChoice(computerSelection) {
+  computerText.textContent = `The computer choice was: ${computerSelection}`;
+}
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
 
   if (playerSelection === "rock" && computerSelection === "rock") {
-    console.log("The game is tie!");
-    return 0;
+    displayStatus("The game is tie!");
   } else if (playerSelection === "rock" && computerSelection === "paper") {
-    console.log("You lose! Paper beats Rock");
-    return 1;
+    displayStatus("You lose! Paper beats Rock");
+    playerWonNum++;
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    console.log("You won! Rock beats Scissors");
-    return 2;
+    displayStatus("You won! Rock beats Scissors");
+    compWonNum++;
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-    console.log("You won! Paper beats Rock");
-    return 2;
+    displayStatus("You won! Paper beats Rock");
   } else if (playerSelection === "paper" && computerSelection === "paper") {
-    console.log("The game is tie!");
-    return 0;
+    displayStatus("The game is tie!");
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
-    console.log("You lose! Scissors cuts Paper");
-    return 1;
+    displayStatus("You lose! Scissors cuts Paper");
+    playerWonNum++;
   } else if (playerSelection === "scissors" && computerSelection === "rock") {
-    console.log("You lose! Rock beats Scissors");
-    return 1;
+    displayStatus("You lose! Rock beats Scissors");
+    playerWonNum++;
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    console.log("You won! Scissors cuts Paper");
-    return 2;
-  } else if (playerSelection === "scissors" && computerSelection === "scissors") {
-    console.log("The game is tie!");
-    return 0;
+    displayStatus("You won! Scissors cuts Paper");
+    compWonNum++;
+  } else if (
+    playerSelection === "scissors" &&
+    computerSelection === "scissors"
+  ) {
+    displayStatus("The game is tie!");
   } else {
-    console.log("The round didnt count");
-    return 0;
+    displayStatus("The round didnt count");
+    return -1;
   }
+  return 0;
+}
+function displayScore() {
+  score.textContent = `Player: ${playerWonNum} - Computer: ${compWonNum}`;
 }
 
-function game() {
-  let compWonNum = 0;
-  let playerWonNum = 0;
-  let winner;
-  for (let i = 0; i < maxRound; i++) {
-    if(playerWonNum === 3 ||compWonNum === 3) {
-      break;
-    }
-    // while((playerSelection = prompt("What is your selection?")) === null) {}
-    computerSelection = getComputerChoice();
-    winner = playRound(playerSelection, computerSelection);
-    if (winner === 0) {
-      --i;
-    } else if (winner === 1) {
-      compWonNum++;
-    } else if (winner === 2) {
-      playerWonNum++;
-    }
-    console.log(`\nScore: Player: ${playerWonNum} / Computer: ${compWonNum} \n`);
-  }
+function displayStatus(statusText) {
+  statusBar.textContent = statusText;
+}
+
+function displayWinner(text = null) {
+  if(!text)
   if (compWonNum > playerWonNum) {
-    alert(`The computer won the game. Score: Player: ${playerWonNum} / Computer: ${compWonNum} `);
+    winner.textContent = `The winner is CPU.`;
   } else {
-    alert(`The player won the game. Score: Player: ${playerWonNum} / Computer: ${compWonNum} `);
+    winner.textContent = `Congrulations! The winner is player.`;
   }
-  console.log(`\nFinal Score: Player: ${playerWonNum} / Computer: ${compWonNum} \n`)
+  else {
+    winner.textContent = text;
+  }
+}
+function checkFinished() {
+  if (compWonNum >= 5 || playerWonNum >= 5) {
+    return true;
+  }
+  return false;
 }
 
-const maxRound = 5;
-let playerSelection, computerSelection;
+for (let button of buttons) {
+  button.addEventListener("click", (e) => {
+    if (checkFinished()) {
+      return;
+    }
+    playRound(button.id, getComputerChoice());
+    displayScore();
+    if(playerWonNum === 5 || compWonNum === 5) {
+      displayWinner();
+    }
+  });
+}
 
-game();
+resetButton.addEventListener("click", (e) => {
+  compWonNum = 0  , playerWonNum = 0;
+  displayWinner('');  
+  displayStatus('');
+  displayScore();
+  displayComputerChoice('');
+});
