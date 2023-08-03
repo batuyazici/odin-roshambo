@@ -13,12 +13,12 @@
     />
   </head>
   <body>
-    <div class="mainContainer">
-        <header id="header">Rock - Paper - Scissors</header>
-      <div class="gameContainer">
+    <section class="mainContainer">
+      <header id="header">Rock - Paper - Scissors</header>
+      <section class="gameContainer">
         <div class="playerContainer">
-          <div class="buttonContainer" id="container1">
-            <button id="button">
+          <div class="buttonContainer" id=container1">
+            <button id="rock">
               <div class="imageBox">
                 <img src="./assets/rock.png" alt="Rock pixel picture" />
               </div>
@@ -39,11 +39,15 @@
             </button>
           </div>
         </div>
-        <div class="scoreContainer">
-          <div></div>
-        </div>
-      </div>
-    </div>
+        <section class="scoreContainer">
+          <p id="computerText">The computer choice was: </p>
+         <p id="scoreText">Player: 0 - Computer: 0</p>
+         <p id="statusText"></p>
+         <p id="winnerText"></p>
+         <button id="reset">Reset Game</button>
+        </section>
+      </section>
+    </section>
     <script src="./index.js" defer></script>
   </body>
 </html>
