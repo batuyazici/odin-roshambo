@@ -71,12 +71,13 @@ function displayStatus(statusText) {
 }
 
 function displayWinner(text = null) {
-  if(!text)
+  if(!text) {
   if (compWonNum > playerWonNum) {
     winner.textContent = `The winner is CPU.`;
   } else {
     winner.textContent = `Congrulations! The winner is player.`;
   }
+    }
   else {
     winner.textContent = text;
   }
