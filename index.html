@@ -1,53 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Re - cham - beu</title>
-    <link rel="stylesheet" href="./index.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <section class="mainContainer">
-      <header id="header">Rock - Paper - Scissors</header>
-      <section class="gameContainer">
-        <div class="playerContainer">
-          <div class="buttonContainer" id=container1">
-            <button id="rock">
-              <div class="imageBox">
-                <img src="./assets/rock.png" alt="Rock pixel picture" />
-              </div>
-            </button>
-          </div>
-          <div class="buttonContainer" id="container2">
-            <button id="paper">
-              <div class="imageBox">
-                <img src="./assets/paper.png" alt="Paper pixel picture" />
-              </div>
-            </button>
-          </div>
-          <div class="buttonContainer" id="container3">
-            <button id="scissors">
-              <div class="imageBox">
-                <img src="./assets/scissors.png" alt="Scissors pixel picture" />
-              </div>
-            </button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Re - cham - beu</title>
+  <link rel="stylesheet" href="./index.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <section class="mainContainer">
+    <header class="header">Rock - Paper - Scissors</header>
+    <section class="gameContainer">
+      <section class="playerContainer">
+        <div class="buttonContainer" id=container1">
+          <button id="rock">
+            <div class="imageBox">
+              <img src="./assets/rock.png" alt="Rock pixel picture" />
+            </div>
+          </button>
+        </div>
+        <div class="buttonContainer" id="container2">
+          <button id="paper">
+            <div class="imageBox">
+              <img src="./assets/paper.png" alt="Paper pixel picture" />
+            </div>
+          </button>
+        </div>
+        <div class="buttonContainer" id="container3">
+          <button id="scissors">
+            <div class="imageBox">
+              <img src="./assets/scissors.png" alt="Scissors pixel picture" />
+            </div>
+          </button>
+        </div>
+      </section>
+      <section class="statusContainer">
+        <p id="statusText"></p>
+        <img id="playerSuccess" class="hidden" src="./assets/awkward-smile-brimstone.png" alt="Smile Brimstone" />
+        <img id="computerSuccess" class="hidden" src="./assets/man-down-spray-brimstone.png" alt="Down Brimstone" />
+        <p id="winnerText"></p>
+        <button id="reset" class="hidden">New Game</button>
+      </section>
+      <section class="scoreContainer">
+        <div class="scoreBox" id="box">
+          <p id="score">Score</p>
+          <div class="centered">
+            <p id="playerScore">Player: 0</p>
+            <p id="computerScore">Computer: 0</p>
           </div>
         </div>
-        <section class="scoreContainer">
-          <p id="computerText">The computer choice was: </p>
-         <p id="scoreText">Player: 0 - Computer: 0</p>
-         <p id="statusText"></p>
-         <p id="winnerText"></p>
-         <button id="reset">Reset Game</button>
-        </section>
+        <div class="choiceBox" id="box">
+          <p id="computerText">Computer choice was: <br>
+            <br><span id="computerInfo">-</span>
+          </p>
+        </div>
+        <div id="box">
+          <p id="playerText">Your choice was:<br><br> <span id="playerInfo">-</span></p>
+        </div>
       </section>
     </section>
-    <script src="./index.js" defer></script>
-  </body>
+    <div class="footer">Made with &hearts; by Mehmet Batuhan Yazıcı</div>
+  </section>
+
+  <script src="./index.js" defer></script>
+</body>
+
 </html>

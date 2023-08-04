@@ -1,97 +1,135 @@
-body,
+ody,
 button {
   background-color: black;
   color: white;
-  margin: auto;
-  font-family: 'Monoton', cursive;
-}
-
-button {
-    border: none;
-
 }
 
 body {
-
-  min-height: 100vh;
   margin: 0;
-  padding: 0;
+}
+button {
+  border: none;
 }
 
-#header {
-    font-size: 50px;
-    display: flex;
-    justify-content: center;
+.header {
+  font-size: 50px;
+  flex-shrink: 0;
+  text-align: center;
+  font-family: "Monoton", cursive;
 }
 .mainContainer {
-    margin: 0 5px;
-    padding:5px;
-    height: auto;
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  font-family: "Roboto Mono", monospace;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  cursor: default;
+  caret-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .gameContainer {
-    height: 600px;
-    width: auto;
-    display: flex;
-    justify-content: space-around;
+  flex: 1 0 auto;
+  margin: 35px;
+  height: 723px;
+  width: auto;
+  display: flex;
+  justify-content: space-around;
 }
 .gameContainer .playerContainer {
   background-color: black;
   display: flex;
-  align-items:stretch;
+  align-items: stretch;
   flex-direction: column;
   height: auto;
 }
+.gameContainer .statusContainer {
+  width: 632px;
+  text-align: center;
+}
 .gameContainer .scoreContainer {
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    border: solid 4px white;
-    border-radius: 1em;
-    width: auto;
-    height: auto;
-    justify-content: center;
+  width: auto;
+  height: auto;
+}
+.gameContainer .scoreContainer #box {
+  background-color: black;
+  border: solid 4px white;
+  border-radius: 1em;
+  width: 245px;
+  text-align: center;
+  margin-bottom: 40px;
+  height: 180px;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.gameContainer .scoreContainer #score {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.gameContainer .scoreContainer .centered {
+  font-size: 17px;
+  font-style: normal;
+  text-align: center;
 }
 .playerContainer .buttonContainer {
-    display: flex;
-    border: 4px solid white;
-    border-radius: 1em;
-    width: auto;
-    padding:5px;
-    transition: border-color 0.3s ease;
-    height: auto;
-  }
-  .buttonContainer:hover,  .scoreContainer #reset:hover{
-    border-color: white; 
-    box-shadow: 0 0 1rem white;
-  }
-.buttonContainer .imageBox {
-    border-radius: 1em   ;
-
+  padding: 5px;
+  margin-bottom: 41px;
+  flex: 1;
+  border: 4px solid white;
+  border-radius: 1em;
+  width: auto;
+  transition: border-color 0.3s ease;
+  height: auto;
 }
-  
+.buttonContainer:hover,
+.statusContainer #reset:hover {
+  border-color: white;
+  box-shadow: 0 0 1rem white;
+}
+.buttonContainer .imageBox {
+  border-radius: 1em;
+}
+
 .imageBox img {
+  cursor: pointer;
   width: 200px;
-  height: 165px;
+  height: 159px;
   padding: 5px;
 }
 .imageBox:hover {
-    transform: scale(1.1); /* Scale up the imageBox on hover */
-    transition: transform 0.3s ease; /* Add transition for the scaling effect */
-  }
-
-.scoreContainer #reset {
-    border: 3px solid white;
-    padding: 10px;
-    border-radius: 1em;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
 }
 
-.scoreContainer #computerText {
-    font-style: italic;
+.gameContainer .statusContainer #reset {
+  border: 3px solid white;
+  padding: 10px;
+  border-radius: 0em;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 41px;
 }
 
-
-
+.footer {
+  font-style: italic;
+  flex-shrink: 0;
+  font-size: 25px;
+  border-top: 4px solid white;
+  text-align: center;
+  padding: 15px;
+  color: white;
+}
+.gameContainer .statusContainer #statusText {
+  font-size: 28px;
+  font-style: italic;
+}
+.gameContainer .statusContainer #winnerText {
+  font-size: 29px;
+  font-style: bold;
+}
+.hidden {
+  display: none;
+}
