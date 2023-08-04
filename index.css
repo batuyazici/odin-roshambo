@@ -36,6 +36,7 @@ button {
   justify-content: space-around;
 }
 .gameContainer .playerContainer {
+  margin-top:20px;
   background-color: black;
   display: flex;
   align-items: stretch;
@@ -49,6 +50,7 @@ button {
 }
 .gameContainer .scoreContainer {
   width: auto;
+  margin-top:20px;
   height: 723px;
 }
 .gameContainer .scoreContainer #box {
