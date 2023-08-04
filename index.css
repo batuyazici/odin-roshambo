@@ -31,7 +31,6 @@ button {
 .gameContainer {
   flex: 1 0 auto;
   margin: 35px;
-  height: 723px;
   width: auto;
   display: flex;
   justify-content: space-around;
@@ -41,15 +40,16 @@ button {
   display: flex;
   align-items: stretch;
   flex-direction: column;
-  height: auto;
+  height: 723px;
 }
 .gameContainer .statusContainer {
   width: 632px;
+  height:auto;
   text-align: center;
 }
 .gameContainer .scoreContainer {
   width: auto;
-  height: auto;
+  height: 723px;
 }
 .gameContainer .scoreContainer #box {
   background-color: black;
