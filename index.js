@@ -3,21 +3,20 @@ let playerWonNum = 0;
 const buttons = document.querySelectorAll("button");
 const resetButton = document.querySelector("#reset");
 const winner = document.querySelector("#winnerText");
-const computerText = document.querySelector("#computerInfo");
-const playerText = document.querySelector("#playerInfo");
-const playerScore = document.querySelector("#playerScore");
-const computerScore = document.querySelector("#computerScore");
-const playerImg = document.querySelector("#playerSuccess");
-const computerImg = document.querySelector("#computerSuccess");
+const computerText = document.querySelector("#computerText");
+const score = document.querySelector("#scoreText");
 const statusBar = document.querySelector("#statusText");
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3) + 1;
   switch (choice) {
     case 1:
+      displayComputerChoice("Rock");
       return "Rock";
     case 2:
+      displayComputerChoice("Paper");
       return "Paper";
     case 3:
+      displayComputerChoice("Scissors");
       return "Scissors";
     default:
       return null;
@@ -25,73 +24,61 @@ function getComputerChoice() {
 }
 
 function displayComputerChoice(computerSelection) {
-  computerText.textContent = `${computerSelection}`;
-}
-function displayPlayerChoice(playerSelection) {
-  playerText.textContent = `${playerSelection}`;
+  computerText.textContent = `The computer choice was: ${computerSelection}`;
 }
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
-  displayComputerChoice(computerSelection);
-  displayPlayerChoice(playerSelection);
+
   if (playerSelection === "rock" && computerSelection === "rock") {
-    displayStatus("The game is tie!", "grey");
+    displayStatus("The game is tie!");
   } else if (playerSelection === "rock" && computerSelection === "paper") {
-    displayStatus("You lose! Paper beats Rock", "grey");
-    compWonNum++;
+    displayStatus("You lose! Paper beats Rock");
+    playerWonNum++;
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    displayStatus("You won! Rock beats Scissors", "white");
-    playerWonNum++;
+    displayStatus("You won! Rock beats Scissors");
+    compWonNum++;
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-    playerWonNum++;
-    displayStatus("You won! Paper beats Rock", "white");
+    displayStatus("You won! Paper beats Rock");
   } else if (playerSelection === "paper" && computerSelection === "paper") {
-    displayStatus("The game is tie!", "grey");
+    displayStatus("The game is tie!");
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
-    displayStatus("You lose! Scissors cuts Paper", "grey");
-    compWonNum++;
-  } else if (playerSelection === "scissors" && computerSelection === "rock") {
-    displayStatus("You lose! Rock beats Scissors", "grey");
-    compWonNum++;
-  } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    displayStatus("You won! Scissors cuts Paper", "white");
+    displayStatus("You lose! Scissors cuts Paper");
     playerWonNum++;
+  } else if (playerSelection === "scissors" && computerSelection === "rock") {
+    displayStatus("You lose! Rock beats Scissors");
+    playerWonNum++;
+  } else if (playerSelection === "scissors" && computerSelection === "paper") {
+    displayStatus("You won! Scissors cuts Paper");
+    compWonNum++;
   } else if (
     playerSelection === "scissors" &&
     computerSelection === "scissors"
   ) {
-    displayStatus("The game is tie!", "grey");
+    displayStatus("The game is tie!");
   } else {
-    displayStatus("The round didnt count", "grey");
+    displayStatus("The round didnt count");
     return -1;
   }
   return 0;
 }
 function displayScore() {
-  playerScore.textContent = `Player: ${playerWonNum}`;
-  computerScore.textContent = `Computer: ${compWonNum}`;
+  score.textContent = `Player: ${playerWonNum} - Computer: ${compWonNum}`;
 }
 
-function displayStatus(statusText, color) {
+function displayStatus(statusText) {
   statusBar.textContent = statusText;
-  statusBar.setAttribute("style", `color: ${color}`);
 }
 
 function displayWinner(text = null) {
-  if (text === null) {
-    if (compWonNum > playerWonNum) {
-      computerImg.classList.remove("hidden");
-      winner.textContent = `The winner is CPU.`;
-      winner.setAttribute("style", "color:red");
-    } else {
-      playerImg.classList.remove("hidden");
-      winner.textContent = `Congrulations! The winner is player.`;
-      winner.setAttribute("style", "color:green");
-    }
+  if(!text) {
+  if (compWonNum > playerWonNum) {
+    winner.textContent = `The winner is CPU.`;
   } else {
-    computerImg.classList.add("hidden");
-    playerImg.classList.add("hidden");
+    winner.textContent = `Congrulations! The winner is player.`;
+  }
+    }
+  else {
     winner.textContent = text;
   }
 }
@@ -109,26 +96,16 @@ for (let button of buttons) {
     }
     playRound(button.id, getComputerChoice());
     displayScore();
-    if (playerWonNum === 5 || compWonNum === 5) {
-      displayStatus("");
+    if(playerWonNum === 5 || compWonNum === 5) {
       displayWinner();
-      getResetButton();
     }
   });
 }
-function getResetButton() {
-  resetButton.classList.remove("hidden");
-}
 
-function setResetButton() {
-  resetButton.classList.add("hidden");
-}
 resetButton.addEventListener("click", (e) => {
-  (compWonNum = 0), (playerWonNum = 0);
-  displayWinner("");
-  displayStatus("");
+  compWonNum = 0  , playerWonNum = 0;
+  displayWinner('');  
+  displayStatus('');
   displayScore();
-  displayComputerChoice("-");
-  displayPlayerChoice("-");
-  setResetButton();
+  displayComputerChoice('');
 });
